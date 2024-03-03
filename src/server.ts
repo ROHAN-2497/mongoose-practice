@@ -4,7 +4,7 @@ const port = 5000;
 const mongoose = require("mongoose");
 
 // database connection
-async function main() {
+async function bootstrap() {
   try {
     await mongoose.connect("mongodb://127.0.0.1:27017/mongoose-practice");
     console.log(`database connection succesful`);
@@ -12,7 +12,7 @@ async function main() {
     console.log(`failed to database connect`, err);
   }
 }
-main();
+bootstrap();
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
