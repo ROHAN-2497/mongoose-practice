@@ -1,13 +1,13 @@
 import cors from "cors";
 import express, { Application, Request, Response, NextFunction } from "express";
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const app: Application = express();
 
 // Using Cors
 app.use(cors());
 
-// parse data
+// parse data Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -47,17 +47,38 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
     password: { type: String, required: true },
     dateOfBirth: { type: String, required: true },
     gender: { type: String, enum: ["male", "female"] },
-    email: { type: String, required: true },
+    email: { type: String },
     contactNo: { type: String, required: true },
     emergencyContactNo: { type: String, required: true },
     presentAdress: { type: String, required: true },
     permanentAdress: { type: String, required: true },
   });
-
-  //   res.send("Hello World!");
-  //   next();
+  //   make Model
+  const User = model<IUser>("User", userSchema);
+  // model theke ekta instance make korte hobe
+  const createUserToDB = async () => {
+    const user = new User({
+      id: "69kl",
+      role: "student",
+      password: "jhakanaka",
+      name: {
+        firstName: "jubayar",
+        middleName: "ahmmed",
+        lastName: "rohan",
+      },
+      gender: "male",
+      email: "r1orhan@gmail.com",
+      contactNo: "01629124072",
+      emergencyContactNo: "01797511297",
+      presentAdress: "Ishurdi",
+      permanentAdress: "Jannatul ferdous",
+    });
+    await user.save();
+  };
 });
 
+//   res.send("Hello World!");
+//   next();
 export default app;
 
 // insering a test data in a mongodb
