@@ -58,11 +58,11 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
   // model theke ekta instance make korte hobe
   const createUserToDB = async () => {
     const user = new User({
-      id: "69kl",
+      id: "6933",
       role: "student",
       password: "jhakanaka",
       name: {
-        firstName: "jubayar",
+        firstName: "jubayar2",
         middleName: "ahmmed",
         lastName: "rohan",
       },
@@ -74,6 +74,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
       permanentAdress: "Jannatul ferdous",
     });
     await user.save();
+    console.log(user);
   };
 });
 
