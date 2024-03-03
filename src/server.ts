@@ -1,19 +1,18 @@
 import mongoose from "mongoose";
+import app from "./app";
 
-const port = 5000;
+const port: number = 5000;
 
-/* database connection*/
-
+// database connection
 async function bootstrap() {
   try {
     await mongoose.connect("mongodb://127.0.0.1:27017/mongoose-practice");
-    console.log(`database connection succesful`);
+    console.log(`database connect succesful`);
     app.listen(port, () => {
-      console.log(`server is listening on port ${port}`);
+      console.log(`Example app listening on port ${port}`);
     });
-  } catch (err) {
-    console.log(`failed to database connect`, err);
+  } catch (error) {
+    console.log(`failed to database connect`, error);
   }
 }
 bootstrap();
-export default app;
