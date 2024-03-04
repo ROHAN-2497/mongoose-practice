@@ -13,48 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
   // create a Interface
-  interface IUser {
-    id: string;
-    role: "student";
-    password: string;
-    name: {
-      firstName: string;
-      middleName: string;
-      lastName: string;
-    };
-    dateOfBirth?: string;
-    gender: "male" | "female";
-    email?: string;
-    contactNo: string;
-    emergencyContactNo: string;
-    presentAdress: string;
-    permanentAdress: string;
-  }
 
   //create schema Using Interface
 
-  const userSchema = new Schema<IUser>({
-    name: {
-      firstName: {
-        type: String,
-        required: true,
-      },
-      middleName: { type: String, required: true },
-      lastName: { type: String, required: true },
-    },
-    id: { type: String, required: true },
-    role: { type: String, required: true },
-    password: { type: String, required: true },
-    dateOfBirth: { type: String, required: true },
-    gender: { type: String, enum: ["male", "female"] },
-    email: { type: String },
-    contactNo: { type: String, required: true },
-    emergencyContactNo: { type: String, required: true },
-    presentAdress: { type: String, required: true },
-    permanentAdress: { type: String, required: true },
-  });
-  //   make Model
-  const User = model<IUser>("User", userSchema);
   // model theke ekta instance make korte hobe
   const createUserToDB = async () => {
     const user = new User({
@@ -89,3 +50,11 @@ export default app;
   step 3 : model
   step 4 : Database Query
   */
+
+// pattren MVC  Moduler
+
+// interface --> user.interface.ts
+// schema, modals  --> user.modal.ts
+// route
+// router function --> controler.ts
+// Database Query Function --> service
