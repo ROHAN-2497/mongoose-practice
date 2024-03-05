@@ -1,6 +1,8 @@
 import cors from "cors";
 import express, { Application } from "express";
-import router from "./apps/modules/user/user.router";
+
+// application routes
+import userRoutes from "./apps/modules/user/user.router";
 
 const app: Application = express();
 
@@ -11,7 +13,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/app/v1/user", router);
+// app.get("/app/v1/user", router);
+app.use("app/v1/user", userRoutes);
 
 //   res.send("Hello World!");
 //   next();
