@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/");
+app.get("/app/v1/user");
 
 //   res.send("Hello World!");
 //   next();
