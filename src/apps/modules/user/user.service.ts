@@ -1,4 +1,6 @@
-const createUserToDB = async () => {
+import User from "./user.model";
+
+export const createUserToDB = async () => {
   const user = new User({
     id: "6933",
     role: "student",

@@ -1,6 +1,5 @@
 import cors from "cors";
-import express, { Application, Request, Response, NextFunction } from "express";
-import { Schema, model } from "mongoose";
+import express, { Application } from "express";
 
 const app: Application = express();
 
@@ -11,33 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  // create a Interface
-
-  //create schema Using Interface
-
-  // model theke ekta instance make korte hobe
-  const createUserToDB = async () => {
-    const user = new User({
-      id: "6933",
-      role: "student",
-      password: "jhakanaka",
-      name: {
-        firstName: "jubayar2",
-        middleName: "ahmmed",
-        lastName: "rohan",
-      },
-      gender: "male",
-      email: "r1orhan@gmail.com",
-      contactNo: "01629124072",
-      emergencyContactNo: "01797511297",
-      presentAdress: "Ishurdi",
-      permanentAdress: "Jannatul ferdous",
-    });
-    await user.save();
-    console.log(user);
-  };
-});
+app.get("/");
 
 //   res.send("Hello World!");
 //   next();
